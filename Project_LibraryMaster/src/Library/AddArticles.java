@@ -259,6 +259,11 @@ public class AddArticles extends javax.swing.JInternalFrame {
           if(data.codeValidation(tf_Code.getText(), ""+cb_Type.getSelectedItem())==false){
               data.addBookOrMagazine(tf_Code.getText(), tf_name.getText(), tf_Author.getText(), tf_Npages.getText(), "Available", "0", "0", ""+cb_Type.getSelectedItem(), "true", "", path);
               JOptionPane.showMessageDialog(rootPane, "success");
+              tf_Author.setText("");
+              tf_Code.setText("");
+              tf_Npages.setText("");
+              tf_name.setText("");
+              System.out.println(data.getMagazines().size());
           }else{
           JOptionPane.showMessageDialog(null, "This code is already in use");
           }

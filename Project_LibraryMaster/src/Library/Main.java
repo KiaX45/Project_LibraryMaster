@@ -19,7 +19,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         data = new Data();
         data.loadUsers();
-        data.loadMagazines();
+       // data.loadMagazines();
     //    data.loadBooks();
     }
 //------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ public class Main extends javax.swing.JFrame {
         });
         jMenuInventory.add(jMenuItemAdd);
 
-        jMenuItemMagazines.setText("Magazines");
+        jMenuItemMagazines.setText("Buscar Article");
         jMenuItemMagazines.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemMagazinesActionPerformed(evt);
@@ -143,7 +143,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jMenuItemMagazinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMagazinesActionPerformed
-        // TODO add your handling code here:
+       ViewArticles viewA = new ViewArticles(data, this);
+       dpi_main.add(viewA);
+        packChild(viewA, evt);
     }//GEN-LAST:event_jMenuItemMagazinesActionPerformed
 
     private void jMenuItemAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAddActionPerformed

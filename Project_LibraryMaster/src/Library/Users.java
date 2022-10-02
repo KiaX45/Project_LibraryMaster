@@ -33,7 +33,6 @@ public class Users extends javax.swing.JInternalFrame {
         return rowCount;
     }
 //------------------------------------------------------------------------------
-
     private void refresh() {
 
         tb_users.setModel(new TableModel() {

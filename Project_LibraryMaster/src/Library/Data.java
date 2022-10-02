@@ -1,4 +1,3 @@
-
 package Library;
 
 import java.io.File;
@@ -9,16 +8,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-
 public class Data {
 //------------------------------------------------------------------------------
-protected ArrayList<String[]> users;//id, name, telephone, state, visible, amounth, image
-protected ArrayList<String[]> books;//code name author numberofPages state numberoftimesborrowed timeborrowed idStudent visible
-protected ArrayList<String[]> magazines;//code name author numberofPages state numberoftimesborrowed timeborrowed idStudent visible
-protected ArrayList<String[]> admins;
+
+    protected ArrayList<String[]> users;//id, name, telephone, state, visible, amounth, image
+    protected ArrayList<String[]> books;//code name author numberofPages state numberoftimesborrowed timeborrowed idStudent visible
+    protected ArrayList<String[]> magazines;//code name author numberofPages state numberoftimesborrowed timeborrowed idStudent visible
+    protected ArrayList<String[]> admins;
 
 //------------------------------------------------------------------------------
-
     public Data() {
         users = new ArrayList<>();
         books = new ArrayList<>();
@@ -43,7 +41,8 @@ protected ArrayList<String[]> admins;
     }
 //------------------------------------------------------------------------------
 //Methods Users
-public void loadUsers() {
+
+    public void loadUsers() {
         File file = new File("data2.0/users.data");
         try {
             Scanner scan = new Scanner(file);
@@ -59,11 +58,12 @@ public void loadUsers() {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
-}
+    }
 //------------------------------------------------------------------------------
-public void saveUser() {
+
+    public void saveUser() {
         try {
-            try (FileWriter file = new FileWriter("data2.0/users.data")) {
+            try ( FileWriter file = new FileWriter("data2.0/users.data")) {
                 for (String[] user : users) {
                     String tokens = "";
                     for (String field : user) {
@@ -79,48 +79,54 @@ public void saveUser() {
 
     }
 //------------------------------------------------------------------------------
-public void addUser(String id, String name, String telephone, String state, String visible, String Amount, String path){
-    System.out.println("State" + state);
-    String fileds[] = {id,name,telephone,state, visible,Amount, path};
-    users.add(fileds);
-}    
-//------------------------------------------------------------------------------
-public boolean exist(String id){
-    for (String[] fields : users) {
-        if(fields[0].equals(id)){
-            return true;
-        }
+
+    public void addUser(String id, String name, String telephone, String state, String visible, String Amount, String path) {
+        System.out.println("State" + state);
+        String fileds[] = {id, name, telephone, state, visible, Amount, path};
+        users.add(fileds);
     }
-    
-    return false;
-}
 //------------------------------------------------------------------------------
-public String[] getUser(String id){
-    for (String[] fields : users) {
-        if(fields[0].equals(id)){
-            return fields;
+
+    public boolean exist(String id) {
+        for (String[] fields : users) {
+            if (fields[0].equals(id)) {
+                return true;
+            }
         }
+
+        return false;
     }
-    
-    
-   return null; 
-}
+//------------------------------------------------------------------------------
+
+    public String[] getUser(String id) {
+        for (String[] fields : users) {
+            if (fields[0].equals(id)) {
+                return fields;
+            }
+        }
+
+        return null;
+    }
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //Magazines and books 
-public void addBookOrMagazine(String code, String name, String author, String numberOfPages, String state, String numberOfTimes, String time, String type, String visible, String idStudent, String path){
-    System.out.println("type" + type);
-    String fileds[] = {code,name,author,numberOfPages,state, numberOfTimes,time,type, visible, idStudent, path};
-    if(type.toUpperCase().equals("BOOKS")){
-        System.out.println("Si");
-        books.add(fileds);
-    }else if(type.toUpperCase().equals("MAGAZINES")){
-        magazines.add(fileds);
-         System.out.println("Si");
-    } 
-}
+
+    public void addBookOrMagazine(String code, String name, String author, String numberOfPages, String state, String numberOfTimes, String time, String type, String visible, String idStudent, String path) {
+        System.out.println("type" + type);
+        String fileds[] = {code, name, author, numberOfPages, state, numberOfTimes, time, type, visible, idStudent, path};
+        if (type.toUpperCase().equals("BOOKS")) {
+            System.out.println("Si");
+            books.add(fileds);
+        } else if (type.toUpperCase().equals("MAGAZINES")) {
+            magazines.add(fileds);
+            System.out.println("Si");
+        }
+        
+        
+    }
 //------------------------------------------------------------------------------
-public void loadBooks() {
+
+    public void loadBooks() {
         File file = new File("data2.0/books.data");
         try {
             Scanner scan = new Scanner(file);
@@ -136,9 +142,10 @@ public void loadBooks() {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
-}
+    }
 //------------------------------------------------------------------------------
-public void loadMagazines() {
+
+    public void loadMagazines() {
         File file = new File("data2.0/magazines.data");
         try {
             Scanner scan = new Scanner(file);
@@ -154,11 +161,12 @@ public void loadMagazines() {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
-}
+    }
 //------------------------------------------------------------------------------
-public void saveBooks() {
+
+    public void saveBooks() {
         try {
-            try (FileWriter file = new FileWriter("data2.0/books.data")) {
+            try ( FileWriter file = new FileWriter("data2.0/books.data")) {
                 for (String[] user : books) {
                     String tokens = "";
                     for (String field : user) {
@@ -174,9 +182,10 @@ public void saveBooks() {
 
     }
 //------------------------------------------------------------------------------
-public void saveMagazines() {
+
+    public void saveMagazines() {
         try {
-            try (FileWriter file = new FileWriter("data2.0/magazines.data")) {
+            try ( FileWriter file = new FileWriter("data2.0/magazines.data")) {
                 for (String[] user : magazines) {
                     String tokens = "";
                     for (String field : user) {
@@ -192,26 +201,46 @@ public void saveMagazines() {
 
     }
 //------------------------------------------------------------------------------
-public boolean codeValidation(String code, String type){
-    
-    if(type.toUpperCase().equals("BOOK")){
-       for (String[] fields : books) {
-        if(fields[0].equals(code)){
-            return true;
-        }
-    }  
-    }else if(type.toUpperCase().equals("MAGAZINE")){
-         for (String[] fields : magazines) {
-        if(fields[0].equals(code)){
-            return true;
-        }
-    }
-    }
-    
-   
-    return false;
-    }
-}   
-    
-   
 
+    public boolean codeValidation(String code, String type) {
+
+        if (type.toUpperCase().equals("BOOKS")) {
+            for (String[] fields : books) {
+                if (fields[0].equals(code)) {
+                    return true;
+                }
+            }
+        } else if (type.toUpperCase().equals("MAGAZINES")) {
+            for (String[] fields : magazines) {
+                if (fields[0].equals(code)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+//------------------------------------------------------------------------------
+
+    public String[] getBook(String code) {
+
+        for (String[] field : books) {
+            if (field[0].equals(code)) {
+                return field;
+            }
+        }
+
+        return null;
+    }
+//------------------------------------------------------------------------------
+    public String[] getMagazine(String code) {
+
+        for (String[] field : magazines) {
+            if (field[0].equals(code)) {
+                return field;
+            }
+        }
+
+        return null;
+    }
+}

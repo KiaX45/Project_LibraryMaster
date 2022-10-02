@@ -22,12 +22,12 @@ public class UserProfile extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jl_Image = new javax.swing.JLabel();
         jl_Name = new javax.swing.JLabel();
         jl_ID = new javax.swing.JLabel();
         jl_Amount = new javax.swing.JLabel();
         jl_Telephone = new javax.swing.JLabel();
         jl_state = new javax.swing.JLabel();
+        jl_Image = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -51,10 +51,6 @@ public class UserProfile extends javax.swing.JInternalFrame {
             }
         });
 
-        jl_Image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Library/0UserProfile.jpeg"))); // NOI18N
-        jl_Image.setText("jLabel1");
-        jl_Image.setPreferredSize(new java.awt.Dimension(100, 100));
-
         jl_Name.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jl_Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jl_Name.setText("Name: ");
@@ -75,22 +71,24 @@ public class UserProfile extends javax.swing.JInternalFrame {
         jl_state.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jl_state.setText("State:");
 
+        jl_Image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Library/0UserProfile.jpeg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jl_ID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jl_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jl_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jl_Telephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jl_Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jl_Amount, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                     .addComponent(jl_state, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,8 +103,8 @@ public class UserProfile extends javax.swing.JInternalFrame {
                         .addComponent(jl_state, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jl_Amount, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jl_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jl_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addComponent(jl_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -128,8 +126,8 @@ public class UserProfile extends javax.swing.JInternalFrame {
         jl_Amount.setText("Amount of books: " + fields[5]);
         jl_state.setText("State: " + fields[3]);
         String path = fields[6];
-        System.out.println("Este" + path);
         Image image = new ImageIcon(path).getImage();
+
         ImageIcon icon = new ImageIcon(image.getScaledInstance(200,
                 181, Image.SCALE_SMOOTH));
         jl_Image.setIcon(icon);
