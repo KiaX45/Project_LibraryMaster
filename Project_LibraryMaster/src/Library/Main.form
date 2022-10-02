@@ -29,15 +29,21 @@
             <Property name="text" type="java.lang.String" value="Inventory"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBooks">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAdd">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Books"/>
+                <Property name="text" type="java.lang.String" value="Add Magazines or Books"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAddActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemMagazines">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Magazines"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemMagazinesActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

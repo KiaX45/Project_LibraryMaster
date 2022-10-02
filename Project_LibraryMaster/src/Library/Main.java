@@ -19,12 +19,18 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         data = new Data();
         data.loadUsers();
-        //Hola esta funcionando!!!!
+        data.loadMagazines();
+    //    data.loadBooks();
     }
 //------------------------------------------------------------------------------
     public JDesktopPane getDpi_main() {
         return dpi_main;
     } 
+
+    public JMenuItem getjMenuItemAdd() {
+        return jMenuItemAdd;
+    }
+    
 //------------------------------------------------------------------------------ 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,7 +42,7 @@ public class Main extends javax.swing.JFrame {
         jMenuItemAdmin = new javax.swing.JMenuItem();
         jMenuItemStudents = new javax.swing.JMenuItem();
         jMenuInventory = new javax.swing.JMenu();
-        jMenuItemBooks = new javax.swing.JMenuItem();
+        jMenuItemAdd = new javax.swing.JMenuItem();
         jMenuItemMagazines = new javax.swing.JMenuItem();
         jMenuReports = new javax.swing.JMenu();
         jMenuItemDebts = new javax.swing.JMenuItem();
@@ -77,10 +83,20 @@ public class Main extends javax.swing.JFrame {
 
         jMenuInventory.setText("Inventory");
 
-        jMenuItemBooks.setText("Books");
-        jMenuInventory.add(jMenuItemBooks);
+        jMenuItemAdd.setText("Add Magazines or Books");
+        jMenuItemAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAddActionPerformed(evt);
+            }
+        });
+        jMenuInventory.add(jMenuItemAdd);
 
         jMenuItemMagazines.setText("Magazines");
+        jMenuItemMagazines.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMagazinesActionPerformed(evt);
+            }
+        });
         jMenuInventory.add(jMenuItemMagazines);
 
         jMenuBar1.add(jMenuInventory);
@@ -122,7 +138,19 @@ public class Main extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
        data.saveUser();
+       data.saveMagazines();
+       data.saveBooks();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jMenuItemMagazinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMagazinesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemMagazinesActionPerformed
+
+    private void jMenuItemAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAddActionPerformed
+        AddArticles add = new AddArticles(this, data);
+        dpi_main.add(add);
+        packChild(add, evt);
+    }//GEN-LAST:event_jMenuItemAddActionPerformed
 
 //------------------------------------------------------------------------------
     
@@ -189,8 +217,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JDesktopPane dpi_main;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuInventory;
+    private javax.swing.JMenuItem jMenuItemAdd;
     private javax.swing.JMenuItem jMenuItemAdmin;
-    private javax.swing.JMenuItem jMenuItemBooks;
     private javax.swing.JMenuItem jMenuItemDebts;
     private javax.swing.JMenuItem jMenuItemMagazines;
     private javax.swing.JMenuItem jMenuItemStatistics;

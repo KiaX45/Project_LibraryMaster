@@ -13,8 +13,8 @@ import java.util.StringTokenizer;
 public class Data {
 //------------------------------------------------------------------------------
 protected ArrayList<String[]> users;//id, name, telephone, state, visible, amounth, image
-protected ArrayList<String[]> books;
-protected ArrayList<String[]> magazines;
+protected ArrayList<String[]> books;//code name author numberofPages state numberoftimesborrowed timeborrowed idStudent visible
+protected ArrayList<String[]> magazines;//code name author numberofPages state numberoftimesborrowed timeborrowed idStudent visible
 protected ArrayList<String[]> admins;
 
 //------------------------------------------------------------------------------
@@ -105,7 +105,113 @@ public String[] getUser(String id){
     
    return null; 
 }
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//Magazines and books 
+public void addBookOrMagazine(String code, String name, String author, String numberOfPages, String state, String numberOfTimes, String time, String type, String visible, String idStudent, String path){
+    System.out.println("type" + type);
+    String fileds[] = {code,name,author,numberOfPages,state, numberOfTimes,time,type, visible, idStudent, path};
+    if(type.toUpperCase().equals("BOOKS")){
+        System.out.println("Si");
+        books.add(fileds);
+    }else if(type.toUpperCase().equals("MAGAZINES")){
+        magazines.add(fileds);
+         System.out.println("Si");
+    } 
+}
+//------------------------------------------------------------------------------
+public void loadBooks() {
+        File file = new File("data2.0/books.data");
+        try {
+            Scanner scan = new Scanner(file);
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+                StringTokenizer tokens = new StringTokenizer(line, "|");
+                String fields[] = new String[11];
+                for (int i = 0; i < 11; i++) {
+                    fields[i] = tokens.nextToken();
+                }
+                books.add(fields);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+}
+//------------------------------------------------------------------------------
+public void loadMagazines() {
+        File file = new File("data2.0/magazines.data");
+        try {
+            Scanner scan = new Scanner(file);
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+                StringTokenizer tokens = new StringTokenizer(line, "|");
+                String fields[] = new String[11];
+                for (int i = 0; i < 11; i++) {
+                    fields[i] = tokens.nextToken();
+                }
+                magazines.add(fields);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+}
+//------------------------------------------------------------------------------
+public void saveBooks() {
+        try {
+            try (FileWriter file = new FileWriter("data2.0/books.data")) {
+                for (String[] user : books) {
+                    String tokens = "";
+                    for (String field : user) {
+                        tokens += field + "|";
+                    }
+                    file.write(tokens);
+                    file.write("\n");
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
+    }
+//------------------------------------------------------------------------------
+public void saveMagazines() {
+        try {
+            try (FileWriter file = new FileWriter("data2.0/magazines.data")) {
+                for (String[] user : magazines) {
+                    String tokens = "";
+                    for (String field : user) {
+                        tokens += field + "|";
+                    }
+                    file.write(tokens);
+                    file.write("\n");
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+//------------------------------------------------------------------------------
+public boolean codeValidation(String code, String type){
+    
+    if(type.toUpperCase().equals("BOOK")){
+       for (String[] fields : books) {
+        if(fields[0].equals(code)){
+            return true;
+        }
+    }  
+    }else if(type.toUpperCase().equals("MAGAZINE")){
+         for (String[] fields : magazines) {
+        if(fields[0].equals(code)){
+            return true;
+        }
+    }
+    }
     
    
-}
+    return false;
+    }
+}   
+    
+   
+

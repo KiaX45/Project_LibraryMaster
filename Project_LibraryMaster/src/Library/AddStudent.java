@@ -10,7 +10,8 @@ public class AddStudent extends javax.swing.JInternalFrame {
 
     private Data data;
     private Users users;
-    private  String path = "D:\\Carpetas importantes\\Documentos\\U nari�o\\Tercer semestre\\Programaci�n\\Programas en desarrollo\\CHAPTERDMAINFRAME\\images\\0UserProfile.jpg";
+    private String path = "D:\\Carpetas importantes\\Documentos\\U nari�o\\Tercer semestre\\Programaci�n\\Programas en desarrollo\\CHAPTERDMAINFRAME\\images\\0UserProfile.jpg";
+
     public AddStudent(Data d, Users user) {
         initComponents();
         this.data = d;
@@ -185,7 +186,7 @@ public class AddStudent extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AddActionPerformed
-       
+
         if (!"".equals(jt_ID.getText()) && !"".equals(jt_Name.getText()) && !"".equals(jt_telephone.getText())) {
             if (data.exist(jt_ID.getText()) == false) {
                 System.out.println(path);
@@ -196,8 +197,8 @@ public class AddStudent extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "success");
                 System.out.println("SI");
             } else {
-               JOptionPane.showMessageDialog(rootPane, "This code is alredy in use");
-           }
+                JOptionPane.showMessageDialog(rootPane, "This code is alredy in use");
+            }
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "Full fill all the fields");
@@ -209,23 +210,22 @@ public class AddStudent extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosing
 
     private void jb_SelectImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_SelectImageActionPerformed
-        
         JFileChooser jFileChooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG, PNG & GIF", "jpg", "png","gif" );
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG, PNG & GIF", "jpg", "png", "gif");
         jFileChooser.setFileFilter(filter);
         int answer = jFileChooser.showOpenDialog(this);
-        if(answer == JFileChooser.APPROVE_OPTION){
+        if (answer == JFileChooser.APPROVE_OPTION) {
             path = jFileChooser.getSelectedFile().getPath();
-            System.out.println(path);
+            //System.out.println(path);
             Image image = new ImageIcon(path).getImage();
-            ImageIcon icon = new ImageIcon(image.getScaledInstance(jl_Image.getWidth(), 
+            ImageIcon icon = new ImageIcon(image.getScaledInstance(jl_Image.getWidth(),
                     jl_Image.getHeight(), Image.SCALE_SMOOTH));
             jl_Image.setIcon(icon);
         }
     }//GEN-LAST:event_jb_SelectImageActionPerformed
 
     private void jb_Cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_Cancel1ActionPerformed
-       users.setVisible(true);
+        users.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jb_Cancel1ActionPerformed
 

@@ -128,8 +128,8 @@ public class UserProfile extends javax.swing.JInternalFrame {
         jl_Amount.setText("Amount of books: " + fields[5]);
         jl_state.setText("State: " + fields[3]);
         String path = fields[6];
+        System.out.println("Este" + path);
         Image image = new ImageIcon(path).getImage();
-
         ImageIcon icon = new ImageIcon(image.getScaledInstance(200,
                 181, Image.SCALE_SMOOTH));
         jl_Image.setIcon(icon);
