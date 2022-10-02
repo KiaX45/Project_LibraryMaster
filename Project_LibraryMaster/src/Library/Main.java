@@ -19,6 +19,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         data = new Data();
         data.loadUsers();
+        //Hola esta funcionando!!!!
     }
 //------------------------------------------------------------------------------
     public JDesktopPane getDpi_main() {
